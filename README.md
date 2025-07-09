@@ -75,6 +75,9 @@ Grafana
     └── spring-boot-app/
 ```
 
+## Posting
+[OpenTelemetry와 Prometheus, Grafana로 Spring Boot API 응답시간과 에러율 모니터링하기](https://medium.com/@sunghyunroh/opentelemetry%EC%99%80-prometheus-grafana%EB%A1%9C-spring-boot-api-%EC%9D%91%EB%8B%B5%EC%8B%9C%EA%B0%84%EA%B3%BC-%EC%97%90%EB%9F%AC%EC%9C%A8-%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81%ED%95%98%EA%B8%B0-72f2ca381931?sk=a084d2d0c04a0e08c9483935be651e10)
+
 ## 🧑‍💼 Author
 
 **devload** – [@github](https://github.com/devload)
