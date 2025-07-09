@@ -1,0 +1,49 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Spring Boot API Metrics",
+    "timezone": "browser",
+    "panels": [
+      {
+        "type": "timeseries",
+        "title": "API Request Count by Route",
+        "targets": [
+          {
+            "expr": "rate(http_server_request_duration_seconds_count[1m])",
+            "legendFormat": "{{http_route}} {{http_response_status_code}}",
+            "refId": "A"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+      },
+      {
+        "type": "timeseries",
+        "title": "Average Response Time (ms)",
+        "targets": [
+          {
+            "expr": "rate(http_server_request_duration_seconds_sum[1m]) / rate(http_server_request_duration_seconds_count[1m]) * 1000",
+            "legendFormat": "avg(ms)",
+            "refId": "B"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }
+      },
+      {
+        "type": "stat",
+        "title": "5xx Error Rate (%)",
+        "targets": [
+          {
+            "expr": "(rate(http_server_request_duration_seconds_count{http_response_status_code=~\"5..\"}[1m]) / rate(http_server_request_duration_seconds_count[1m])) * 100",
+            "refId": "C"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 0, "y": 8, "w": 6, "h": 5 }
+      }
+    ],
+    "schemaVersion": 37,
+    "version": 1
+  }
+}

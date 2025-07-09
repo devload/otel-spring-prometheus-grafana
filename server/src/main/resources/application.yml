@@ -1,0 +1,41 @@
+otel:
+  service:
+    name: cart
+
+#opentelemetry:
+#  traces:
+#    exporter: otlp
+#    sampler:
+#      probability: 1.0
+#  resource:
+#    attributes:
+#      deployment.environment: dev
+
+
+opentelemetry:
+  traces:
+    exporter: otlp
+  metrics:
+    exporter: otlp
+  logs:
+    exporter: none
+  exporter:
+    otlp:
+      endpoint: http://localhost:4317
+      metrics:
+        endpoint: http://localhost:4317  # ? ?? ??!
+  resource:
+    attributes:
+      deployment.environment: dev
+
+
+management:
+  metrics:
+    tags:
+      http_response_status_code: true
+      http_request_method: true
+      http_route: true
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
